@@ -27,8 +27,15 @@
             placeholder="Password"
           />
         </form>
-        <button>Login</button>
+        <button onclick="handleLogin()">Login</button>
       </div>
+
+      <!-- error message -->
+      <div id="user-login-error" class="hidden error">
+        <h3>User Id not found or Password is wrong! Please try again</h3>
+      </div>
+
+      <script src="./js/login.js"></script>
     </main>
 </body>
 </html>

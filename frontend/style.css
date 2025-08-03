@@ -37,3 +37,11 @@ input[type="password"] {
   padding: 10px;
   width: 20%;
 }
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+}
