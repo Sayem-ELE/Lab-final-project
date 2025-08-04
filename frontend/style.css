@@ -38,10 +38,14 @@ input[type="password"] {
   width: 20%;
 }
 
-.hidden {
-  display: none;
+
+.error h3{
+  text-align: center;
 }
 
 .error {
   color: red;
+}
+.hidden {
+  display: none;
 }
