@@ -48,6 +48,22 @@ app.post("/getUserInfo", (req, res) => {
   });
 });
 
+app.get("/getAllPosts", (req, res) => {
+  let sqlForAllPosts =
+    `SELECT users.userName AS postedUserName, users.userImage AS postedUserImage, posts.postedTime, posts.postedText, posts.postImageUrl FROM posts INNER JOIN users ON posts.postedUserId = users.userId ORDER BY posts.postedTime DESC`; 
+  let query = db.query(sqlForAllPosts, (err, result) => {
+    if (err) {
+      console.log("Error loading all post from database: ", err);
+      throw err;
+    }
+
+    //sending data to front end
+    console.log(result);
+    res.send(result);
+  });
+});
+
+
 app.listen(port, () => {
     console.log(`server is running on port ${port}`);
 });
