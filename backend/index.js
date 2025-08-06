@@ -50,7 +50,7 @@ app.post("/getUserInfo", (req, res) => {
 
 app.get("/getAllPosts", (req, res) => {
   let sqlForAllPosts =
-    `SELECT users.userName AS postedUserName, users.userImage AS postedUserImage, posts.postedTime, posts.postedText, posts.postImageUrl FROM posts INNER JOIN users ON posts.postedUserId = users.userId ORDER BY posts.postedTime DESC`; 
+    `SELECT users.userName AS postedUserName, users.userImage AS postedUserImage, posts.postedTime, posts.postedText, posts.postId, posts.postImageUrl FROM posts INNER JOIN users ON posts.postedUserId = users.userId ORDER BY posts.postedTime DESC`; 
   let query = db.query(sqlForAllPosts, (err, result) => {
     if (err) {
       console.log("Error loading all post from database: ", err);
@@ -62,6 +62,24 @@ app.get("/getAllPosts", (req, res) => {
     res.send(result);
   });
 });
+
+//getting comment of a single post
+
+app.get("/getAllComments/:postId", (req, res) => {
+  let id = req.params.postId;
+
+  let sqlForAllComments = `SELECT users.userName AS commentedUserName, users.userImage AS commentedUserImage, comments.commentId, comments.commentTime, comments.commentOfPostId, comments.commentText FROM comments INNER JOIN users ON comments.commentedUserId = users.userId WHERE comments.commentOfPostId = ${id}`;
+
+  let query = db.query(sqlForAllComments, (err, result) => {
+    if (err) {
+      console.log("Error fetching comments from the database: ", err);
+      throw err;
+    }else{
+      res.send(result);
+    }
+  });
+});
+
 
 
 app.listen(port, () => {
