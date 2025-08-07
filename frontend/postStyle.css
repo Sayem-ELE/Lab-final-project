@@ -55,7 +55,6 @@
     margin-bottom: 10px;
     
 }
-.comments-holder{}
 .comment-user-image img {
   width: 40px;
   height: 40px;
@@ -82,11 +81,13 @@
     width: 60%;
 }
 
-#postComment-input-field {
+
+.postComment-input-field {
   padding: 10px;
   outline: none;
   border: 1px solid rgb(100, 95, 95);
-  width: 80%;
+  width: 80% !important;
+  border-radius: 5px;
 }
 
 .postComment-btn {

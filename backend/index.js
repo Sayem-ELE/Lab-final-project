@@ -80,6 +80,25 @@ app.get("/getAllComments/:postId", (req, res) => {
   });
 });
 
+// adding new comment to a post
+app.post("/postComment", (req, res) => {
+  const { commentOfPostId, commentedUserId, commentText, commentTime } =
+    req.body;
+
+  let sqlForAddingNewComments = `INSERT INTO comments (commentId, commentOfPostId, commentedUserId, commentText, commentTime)
+   VALUES (NULL, ?, ?, ?, ?)`;
+
+  let query = db.query(sqlForAddingNewComments,
+    [commentOfPostId, commentedUserId, commentText, commentTime ],
+    (err, result) => {
+      if (err) {
+        console.log("Error adding comment to the database: ", err);
+      } else{
+      res.send(result);
+    }
+  }
+  );
+});
 
 
 app.listen(port, () => {
