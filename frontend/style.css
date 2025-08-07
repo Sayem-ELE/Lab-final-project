@@ -20,7 +20,7 @@ form {
   margin-bottom: 10px;
 }
 
-button {
+.login-btn {
   background-color: rgb(27, 139, 173);
   color: white;
 
@@ -32,8 +32,11 @@ button {
   margin: 0 auto;
 }
 
-input[type="text"],
-input[type="password"] {
+#user-id  {
+  padding: 10px;
+  width: 20%;
+}
+#password{
   padding: 10px;
   width: 20%;
 }

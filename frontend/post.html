@@ -12,10 +12,29 @@
     
 </head>
 <body>
-  <div class="header">
+  <header class="header">
     <h1>Hello, <span id="logged-username">Username</span></h1>
     <button onclick="logOut()" class="logoutBtn">Logout</button>
-  </div>
+  </header>
+
+  <section id="add-post-container">
+    <article>
+      <h2>Add New Post</h2>
+    
+    <div>
+      <textarea name="" id="newPost-text" cols="30" rows="10"></textarea>
+    </div>
+
+    <div>
+      <input type="text" id="newPost-image" placeholder="Add post Image URL">
+    </div>
+    <div>
+      <button onclick="handleAddNewPost()" class="addPost-btn">Post</button>
+    </div>
+    </article>
+
+
+  </section>
 
     <section id="post-container">
         <!-- post -->

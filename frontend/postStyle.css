@@ -24,6 +24,40 @@
   cursor: pointer;
 
 }
+#add-post-container{
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+.addPost-btn{
+  width: 100px;
+  padding: 10px;
+  background-color: rgb(46, 161, 46);
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+}
+.addPost-btn:hover{
+  background-color:rgb(35, 119, 35) ;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+#add-post-container > h2{
+  color: rgba(31, 31, 241, 0.678);
+}
+#newPost-text{
+  padding: 10px;
+  margin-bottom:10px ;
+}
+#newPost-image{
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
 
 
 #post-container {
@@ -110,7 +144,7 @@
   padding: 10px;
   outline: none;
   border: 1px solid rgb(100, 95, 95);
-  width: 80% !important;
+  width: 80% ;
   border-radius: 5px;
 }
 

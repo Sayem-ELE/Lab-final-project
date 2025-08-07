@@ -99,6 +99,28 @@ app.post("/postComment", (req, res) => {
   }
   );
 });
+//adding a new post
+
+app.post("/addNewPost", (req, res) => {
+  //destructure the req.body object
+
+  const { postedUserId, postedTime, postedText, postImageUrl} = req.body;
+  //sql query
+  let sqlForAddingNewPost = `INSERT INTO posts (postId, postedUserId, postedTime, postedText, postImageUrl) VALUES (NULL, ?, ?, ?, ?)`; 
+
+  let query = db.query(
+    sqlForAddingNewPost,
+    [postedUserId, postedTime, postedText, postImageUrl],
+    (err, result) => {
+      if (err) {
+        console.log("Error adding a new post to the database: ", err);
+        throw err;
+      } else{
+      res.send(result);
+      }
+    }
+  );
+});
 
 
 app.listen(port, () => {

@@ -177,6 +177,59 @@ const fetchAllCommentsOfAPost = async (postId) => {
   }
 };
 
+const handleAddNewPost = async () => {
+  //getting user id from localstorage
+
+  let user =localStorage.getItem("loggedInUser");
+  if(user){
+    user = JSON.parse(user);
+  }
+
+  const postedUserId = user.userId;
+
+  //current time of the post
+
+  let now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+
+  let timeOfPost = now.toISOString();
+  //post text
+
+  const postTextElement = document.getElementById("newPost-text");
+  const postText = postTextElement.value;
+
+  //post image
+  const postImageElement = document.getElementById("newPost-image");
+  const postImageUrl = postImageElement.value;
+
+  //creating a post object
+  const postObject = {
+    postedUserId: postedUserId,
+    postedTime: timeOfPost,
+    postedText: postText,
+    postImageUrl: postImageUrl,
+  };
+  
+  try{
+    const res = await fetch("http://localhost:5000/addNewPost", {
+      method: "POST",
+      headers: {
+      "content-type": "application/json",
+      },
+      body: JSON.stringify(postObject),
+    });
+    const data = await res.json();
+
+  } catch (err){
+    console.log("error while sending data to the server", err);
+  } finally{
+    location.reload();
+  }
+
+};
+
+
+
 //this function runs automatically
 fetchAllPosts();
 checkLoggedInUser();
